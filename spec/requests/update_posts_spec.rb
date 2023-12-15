@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'UpdatePosts', type: :request do
+  include Devise::Test::IntegrationHelpers
+
   before { get '/update_posts' }
 
   describe 'GET /update_posts' do
@@ -20,6 +22,43 @@ RSpec.describe 'UpdatePosts', type: :request do
     it 'assigns unique dates to @dates' do
       dates = assigns(:update_posts).map(&:date).uniq
       expect(assigns(:dates)).to eq(dates)
+    end
+  end
+
+  describe '#new' do
+    before { sign_in FactoryBot.create(:user) }
+    it 'assigns a new UpdatePost to @update_post' do
+      get '/update_posts/new'
+      expect(assigns(:update_post)).to be_a_new(UpdatePost)
+    end
+  end
+
+  describe '#create' do
+    before { sign_in FactoryBot.create(:user) }
+    context 'with valid attributes' do
+      let(:valid_attributes) { FactoryBot.attributes_for(:update_post) }
+
+      it 'creates a new UpdatePost' do
+        expect { post '/update_posts', params: { update_post: valid_attributes } }.to change(UpdatePost, :count).by(1)
+      end
+
+      it 'redirects to the new update_post' do
+        post '/update_posts', params: { update_post: valid_attributes }
+        expect(response).to redirect_to(update_posts_path)
+      end
+    end
+
+    context 'with invalid attributes' do
+      let(:invalid_attributes) { FactoryBot.attributes_for(:update_post, title: nil) }
+
+      it 'does not save the new update_post' do
+        expect { post '/update_posts', params: { update_post: invalid_attributes } }.to_not change(UpdatePost, :count)
+      end
+
+      it 're-renders the new method' do
+        post '/update_posts', params: { update_post: invalid_attributes }
+        expect(response).to render_template(:new)
+      end
     end
   end
 end
