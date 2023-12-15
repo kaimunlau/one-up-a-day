@@ -1,0 +1,2 @@
+module UpdatePostsHelper
+end
