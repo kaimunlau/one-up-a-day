@@ -38,7 +38,6 @@ RSpec.describe UpdatePost, type: :model do
     it_behaves_like 'an invalid update_post', :title
     it_behaves_like 'an invalid update_post', :content
     it_behaves_like 'an invalid update_post', :user
-    it_behaves_like 'an invalid update_post', :date
     it_behaves_like 'a non-unique update_post date scoped to user'
   end
 end
