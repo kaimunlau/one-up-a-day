@@ -1,0 +1,13 @@
+<header class="border-b shadow">
+  <div class="container flex items-center justify-between px-5 py-3 mx-auto">
+    <%= link_to OneUpADay, root_path, class: "text-2xl font-bold" %>
+    <nav>
+      <%= link_to "New Update", new_update_post_path %>
+      <% if user_signed_in? %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path %>
+      <% end %>
+    </nav>
+  </div>
+</header>

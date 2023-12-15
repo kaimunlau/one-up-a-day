@@ -1,0 +1,17 @@
+<h1>Add a new update</h1>
+
+<%= form_with model: @update_post, html: { class: "flex flex-col w-1/2 mx-auto" } do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, placeholder: "Ex: had a a sandwich", class: @update_post.errors[:title].any? ? 'border-red-500' : '' %>
+  <% if @update_post.errors[:title].any? %>
+    <p class="text-red-500">Title <%= @update_post.errors[:title].join(", ") %></p>
+  <% end %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content, placeholder: "Ex: my sandwich was delicious and I will do it again", class: @update_post.errors[:content].any? ? 'border-red-500' : '' %>
+  <% if @update_post.errors[:content].any? %>
+    <p class="text-red-500">Content <%= @update_post.errors[:content].join(", ") %></p>
+  <% end %>
+
+  <%= f.submit "Post Update", class: "w-full border rounded bg-slate-200 cursor-pointer py-2" %>
+<% end %>

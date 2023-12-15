@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_15_123356) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_15_154813) do
   create_table "tag_update_posts", force: :cascade do |t|
     t.integer "tag_id", null: false
     t.integer "update_post_id", null: false
@@ -25,8 +25,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_15_123356) do
   end
 
   create_table "update_posts", force: :cascade do |t|
-    t.string "title", default: "Title", null: false
-    t.text "content", default: "Content", null: false
+    t.string "title"
+    t.text "content"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
