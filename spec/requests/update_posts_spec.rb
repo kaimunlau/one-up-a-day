@@ -9,11 +9,20 @@ RSpec.describe 'UpdatePosts', type: :request do
   end
 
   describe '#index' do
-    it 'assigns @update_posts ordered by date' do
-      update_post1 = FactoryBot.create(:update_post)
-      update_post2 = FactoryBot.create(:update_post, date: Date.today - 1)
+    let(:update_post1) { FactoryBot.create(:update_post) }
+    let(:update_post2) { FactoryBot.create(:update_post, date: Date.today - 2) }
+
+    before do
       get '/update_posts'
+    end
+
+    it 'assigns @update_posts ordered by date' do
       expect(assigns(:update_posts)).to eq([update_post1, update_post2])
+    end
+
+    it 'assigns unique dates to @dates' do
+      dates = assigns(:update_posts).map(&:date).uniq
+      expect(assigns(:dates)).to eq(dates)
     end
   end
 end
