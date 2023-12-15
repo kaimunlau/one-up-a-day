@@ -18,7 +18,10 @@ end
 
 puts 'Creating update_posts...'
 User.all.each do |user|
-  ap FactoryBot.create(:update_post, user:, tags: Tag.all.sample(rand(1..3)))
+  number_of_posts = rand(3..5)
+  number_of_posts.times do |index|
+    ap FactoryBot.create(:update_post, user:, date: Date.today - (index + 1), tags: Tag.all.sample(rand(1..3)))
+  end
 end
 
 puts 'Done!'
