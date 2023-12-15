@@ -1,5 +1,7 @@
-class Update < ApplicationRecord
+class UpdatePost < ApplicationRecord
   belongs_to :user
+  has_many :tag_update_posts
+  has_many :tags, through: :tag_update_posts
 
   validates :title, presence: true
   validates :content, presence: true
