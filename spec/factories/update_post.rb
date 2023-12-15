@@ -3,6 +3,6 @@ FactoryBot.define do
     title { Faker::Lorem.word }
     content { Faker::Lorem.paragraph }
     association :user
-    date { Date.today }
+    date { Date.today - 1 }
   end
 end

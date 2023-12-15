@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :tag do
-    title { Faker::Commerce.material }
+    title { Faker::Commerce.unique.material }
   end
 end
