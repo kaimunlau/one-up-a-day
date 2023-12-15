@@ -1,12 +1,10 @@
 <div class="flex flex-col gap-4">
-  <% @update_posts.each do |post| %>
-    <div class="post">
-      <h2><%= post.user.first_name %> has <%= post.title %></h2>
-      <div class="flex justify-between">
-        <p><%= link_to 'Show', "#" %></p>
-        <p><%= link_to 'Edit', "#" %></p>
-        <p><%= link_to 'Destroy', "#", method: :delete, data: { confirm: 'Are you sure?' } %></p>
-      </div>
-    </div>
+  <% @dates.each do |date| %>
+    <h2 class="text-lg font-semibold"><%= pretty_date_for date %></h2>
+    <div class="flex flex-col gap-4">
+    <% @update_posts.where(date: date).each do |post| %>
+      <%= render "post", post: post %>
+    <% end %>
+</div>
   <% end %>
 </div>
