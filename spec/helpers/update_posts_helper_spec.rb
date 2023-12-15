@@ -1,15 +1,10 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the UpdatePostsHelper. For example:
-#
-# describe UpdatePostsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe UpdatePostsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#pretty_date_for' do
+    it 'returns a pretty date' do
+      date = Date.new(2019, 1, 1)
+      expect(helper.pretty_date_for(date)).to eq('January  1, 2019')
+    end
+  end
 end
