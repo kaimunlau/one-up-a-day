@@ -1,0 +1,9 @@
+<div class="flex flex-col gap-4">
+  <% @tags.each do |tag| %>
+    <h2 class="text-lg font-semibold"><%= tag.title %></h2>
+    <div class="flex flex-col gap-4">
+      <% tag.update_posts.each do |post| %>
+        <%= render "shared/post", post: post %>
+      <% end %>
+  <% end %>
+</div>

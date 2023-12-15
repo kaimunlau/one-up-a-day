@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   resources :update_posts, only: %i[index new create]
+  resources :tags, only: :index
 
   root 'update_posts#index'
 end
