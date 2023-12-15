@@ -1,0 +1,10 @@
+<div class="flex flex-col gap-4">
+  <% @dates.each do |date| %>
+    <h2 class="text-lg font-semibold"><%= pretty_date_for date %></h2>
+    <div class="flex flex-col gap-4">
+    <% @update_posts.where(date: date).each do |post| %>
+      <%= render "post", post: post %>
+    <% end %>
+</div>
+  <% end %>
+</div>

@@ -65,6 +65,9 @@ group :development, :test do
 
   # Use AwesomePrint for pretty printing
   gem 'awesome_print'
+
+  # Bring back assigns
+  gem 'rails-controller-testing'
 end
 
 group :development do
