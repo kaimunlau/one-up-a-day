@@ -59,6 +59,12 @@ group :development, :test do
 
   # Use FactoryBot for fixtures
   gem 'factory_bot_rails'
+
+  # Use Faker for fake data
+  gem 'faker'
+
+  # Use AwesomePrint for pretty printing
+  gem 'awesome_print'
 end
 
 group :development do
