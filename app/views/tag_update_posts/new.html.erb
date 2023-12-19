@@ -1,0 +1,10 @@
+<h1>Add tags to your update</h1>
+<%= render "shared/post", post: @update_post %>
+<form data-controller="tag" data-action="submit->tag#handleSubmit:stop:prevent" data-tag-post-id-value="<%= @update_post.id %>">
+  <select class="w-full" name="tags" id="tags" multiple data-tag-target="select">
+    <% @tags.each do |tag| %>
+      <option value="<%= tag.title %>"><%= tag.title %></option>
+    <% end %>
+  </select>
+  <button type="submit" class="">Add tags</button>
+</form>

@@ -15,7 +15,7 @@ class UpdatePostsController < ApplicationController
     @update_post.user = current_user
 
     if @update_post.save
-      redirect_to update_posts_path
+      redirect_to new_update_post_tag_update_post_path(@update_post)
     else
       flash.alert = @update_post.errors[:date].first if @update_post.errors[:date].present?
       render :new, status: :unprocessable_entity
