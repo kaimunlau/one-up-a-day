@@ -1,0 +1,11 @@
+<div class="flex flex-col gap-4">
+  <% @users.each do |user| %>
+    <h2 class="text-lg font-semibold"><%= user.first_name %></h2>
+    <div class="flex flex-col gap-4">
+      <% user.update_posts.each do |post| %>
+        <%= render "shared/post", post: post %>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
