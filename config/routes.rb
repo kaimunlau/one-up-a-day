@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :tag_update_posts, only: :new
   end
   resources :tags, only: :index
+  resources :users, only: :index
 
   post 'update_posts/:id/tag' => 'tag_update_posts#add_tags', as: :tag_update_post
 
