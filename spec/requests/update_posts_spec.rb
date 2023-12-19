@@ -44,7 +44,7 @@ RSpec.describe 'UpdatePosts', type: :request do
 
       it 'redirects to the new update_post' do
         post '/update_posts', params: { update_post: valid_attributes }
-        expect(response).to redirect_to(update_posts_path)
+        expect(response).to redirect_to(new_update_post_tag_update_post_path(UpdatePost.last))
       end
     end
 
