@@ -3,7 +3,11 @@ import TomSelect from "tom-select"
 
 // Connects to data-controller="new-post"
 export default class extends Controller {
-  static targets = ["select"]
+  static targets = [
+    "select",
+    "titleGroup",
+    "contentGroup"
+  ]
 
   static values = {
     selectedTags: Array,
@@ -12,6 +16,7 @@ export default class extends Controller {
   }
 
   connect() {
+    this.isValidValue = false
     this.#loadTags()
   }
 
@@ -26,10 +31,41 @@ export default class extends Controller {
       return formDataObject
     }
 
-    // TODO: check if title and content are not empty
+    const formData = buildFormData()
+    if (this.#formIsValid(formData)) {
+      this.#postUpdate(formData)
+    }
+  }
 
+  #formIsValid = (formData) => {
+    const clearPreviousValidation = () => {
+      this.titleGroupTarget.classList.remove('bg-red-100')
+      this.titleGroupTarget.querySelector('p')?.remove()
 
-    this.#postUpdate(buildFormData())
+      this.contentGroupTarget.classList.remove('bg-red-100')
+      this.contentGroupTarget.querySelector('p')?.remove()
+    }
+
+    const blockErrorStyle = 'bg-red-100'
+    const errorMessage = '<p class="text-red-500 text-xs italic">Please fill out this field.</p>'
+
+    clearPreviousValidation()
+
+    if (formData.title.length > 0 && formData.content.length > 0) {
+      return true
+    }
+
+    if (formData.title.length === 0) {
+      this.titleGroupTarget.classList.add(blockErrorStyle)
+      this.titleGroupTarget.insertAdjacentHTML('beforeend', errorMessage)
+    }
+
+    if (formData.content.length === 0) {
+      this.contentGroupTarget.classList.add(blockErrorStyle)
+      this.contentGroupTarget.insertAdjacentHTML('beforeend', errorMessage)
+    }
+
+    return false
   }
 
   #postUpdate = async (formDataObject) => {

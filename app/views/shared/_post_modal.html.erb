@@ -2,10 +2,14 @@
   <div class="p-8 bg-white rounded-md shadow-md">
     <h2>What have you done today?</h2>
     <form data-controller="new-post" data-action="submit->new-post#handleSubmit">
-      <label for="title">Today I have...</label>
-      <input type="text" name="title" id="title" placeholder="eaten a sandwich" class="w-full py-2 border rounded cursor-pointer bg-slate-200">
-      <label for="content">More details:</label>
-      <textarea name="content" id="content" placeholder="my sandwich was delicious and I will do it again" class="w-full py-2 border rounded cursor-pointer bg-slate-200"></textarea>
+      <div data-new-post-target="titleGroup" class="p-2 my-2 rounded">
+        <label for="title">Today I have...</label>
+        <input type="text" name="title" id="title" placeholder="eaten a sandwich" class="w-full py-2 border rounded cursor-pointer bg-slate-200">
+      </div>
+      <div data-new-post-target="contentGroup" class="p-2 my-2 rounded">
+        <label for="content">More details:</label>
+        <textarea name="content" id="content" placeholder="my sandwich was delicious and I will do it again" class="w-full py-2 border rounded cursor-pointer bg-slate-200"></textarea>
+      </div>
       <label for="tags">Tags:</label>
       <select data-new-post-target="select" class="w-full" name="tags" id="tags" multiple data-tag-target="select"></select>
       <input type="submit">
