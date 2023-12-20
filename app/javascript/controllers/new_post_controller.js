@@ -16,7 +16,6 @@ export default class extends Controller {
   }
 
   connect() {
-    this.isValidValue = false
     this.#loadTags()
   }
 
@@ -38,31 +37,32 @@ export default class extends Controller {
   }
 
   #formIsValid = (formData) => {
-    const clearPreviousValidation = () => {
-      this.titleGroupTarget.classList.remove('bg-red-100')
-      this.titleGroupTarget.querySelector('p')?.remove()
-
-      this.contentGroupTarget.classList.remove('bg-red-100')
-      this.contentGroupTarget.querySelector('p')?.remove()
-    }
-
     const blockErrorStyle = 'bg-red-100'
     const errorMessage = '<p class="text-red-500 text-xs italic">Please fill out this field.</p>'
 
-    clearPreviousValidation()
+    const setError = (element) => {
+      element.classList.add(blockErrorStyle)
+      element.insertAdjacentHTML('beforeend', errorMessage)
+    }
+
+    const removeError = (element) => {
+      element.classList.remove(blockErrorStyle)
+      element.querySelector('p')?.remove()
+    }
+
+    removeError(this.titleGroupTarget)
+    removeError(this.contentGroupTarget)
 
     if (formData.title.length > 0 && formData.content.length > 0) {
       return true
     }
 
     if (formData.title.length === 0) {
-      this.titleGroupTarget.classList.add(blockErrorStyle)
-      this.titleGroupTarget.insertAdjacentHTML('beforeend', errorMessage)
+      setError(this.titleGroupTarget)
     }
 
     if (formData.content.length === 0) {
-      this.contentGroupTarget.classList.add(blockErrorStyle)
-      this.contentGroupTarget.insertAdjacentHTML('beforeend', errorMessage)
+      setError(this.contentGroupTarget)
     }
 
     return false
