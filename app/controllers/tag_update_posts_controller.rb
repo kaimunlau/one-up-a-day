@@ -1,9 +1,4 @@
 class TagUpdatePostsController < ApplicationController
-  def new
-    @update_post = UpdatePost.find(params[:update_post_id])
-    @tags = Tag.all
-  end
-
   def add_tags
     update_post = UpdatePost.find(params[:id])
     tags = params[:tags]

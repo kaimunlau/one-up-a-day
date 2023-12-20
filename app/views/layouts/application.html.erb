@@ -12,9 +12,10 @@
     <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.min.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body data-controller="modal">
     <%= render "shared/navbar" %>
     <main class="container w-3/4 px-5 mx-auto mt-28">
+      <%= render "shared/post_modal" %>
       <%= render "shared/filters" %>
       <%= yield %>
     </main>

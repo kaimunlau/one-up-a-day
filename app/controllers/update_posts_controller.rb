@@ -15,10 +15,9 @@ class UpdatePostsController < ApplicationController
     @update_post.user = current_user
 
     if @update_post.save
-      redirect_to new_update_post_tag_update_post_path(@update_post)
+      send_success_response(@update_post)
     else
-      flash.alert = @update_post.errors[:date].first if @update_post.errors[:date].present?
-      render :new, status: :unprocessable_entity
+      send_failure_response(@update_post)
     end
   end
 
@@ -26,5 +25,20 @@ class UpdatePostsController < ApplicationController
 
   def update_post_params
     params.require(:update_post).permit(:title, :content)
+  end
+
+  def send_success_response(update_post)
+    respond_to do |format|
+      format.html { redirect_to update_posts_path }
+      format.json { render json: update_post }
+    end
+  end
+
+  def send_failure_response(update_post)
+    flash.alert = @update_post.errors[:date].first if @update_post.errors[:date].present?
+    respond_to do |format|
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: update_post.errors, status: :unprocessable_entity }
+    end
   end
 end

@@ -2,8 +2,8 @@
   <div class="container flex items-center justify-between px-5 py-3 mx-auto">
     <%= link_to OneUpADay, root_path, class: "text-2xl font-bold" %>
     <nav>
-      <%= link_to "New Update", new_update_post_path %>
       <% if user_signed_in? %>
+        <button class="px-4 py-1 transition-all border rounded-xl hover:bg-gray-400 hover:text-white" data-action="click->modal#newUpdate">New Update</button>
         <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete } %>
       <% else %>
         <%= link_to "Sign in", new_user_session_path %>
