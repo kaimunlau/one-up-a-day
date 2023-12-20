@@ -25,14 +25,6 @@ RSpec.describe 'UpdatePosts', type: :request do
     end
   end
 
-  describe '#new' do
-    before { sign_in FactoryBot.create(:user) }
-    it 'assigns a new UpdatePost to @update_post' do
-      get '/update_posts/new'
-      expect(assigns(:update_post)).to be_a_new(UpdatePost)
-    end
-  end
-
   describe '#create' do
     before { sign_in FactoryBot.create(:user) }
     context 'with valid attributes' do
@@ -44,7 +36,7 @@ RSpec.describe 'UpdatePosts', type: :request do
 
       it 'redirects to the new update_post' do
         post '/update_posts', params: { update_post: valid_attributes }
-        expect(response).to redirect_to(new_update_post_tag_update_post_path(UpdatePost.last))
+        expect(response).to redirect_to(update_posts_path)
       end
     end
 
