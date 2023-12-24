@@ -12,10 +12,12 @@ export default class extends Controller {
   static values = {
     selectedTags: Array,
     tags: Array,
-    postId: Number
+    postId: Number,
+    blockErrorStyle: String
   }
 
   connect() {
+    this.blockErrorStyleValue = 'bg-red-100'
     this.#loadTags()
   }
 
@@ -37,21 +39,15 @@ export default class extends Controller {
   }
 
   #formIsValid = (formData) => {
-    const blockErrorStyle = 'bg-red-100'
     const errorMessage = '<p class="text-red-500 text-xs italic">Please fill out this field.</p>'
 
     const setError = (element) => {
-      element.classList.add(blockErrorStyle)
+      element.classList.add(this.blockErrorStyleValue)
       element.insertAdjacentHTML('beforeend', errorMessage)
     }
 
-    const removeError = (element) => {
-      element.classList.remove(blockErrorStyle)
-      element.querySelector('p')?.remove()
-    }
-
-    removeError(this.titleGroupTarget)
-    removeError(this.contentGroupTarget)
+    this.#removeError(this.titleGroupTarget)
+    this.#removeError(this.contentGroupTarget)
 
     if (formData.title.length > 0 && formData.content.length > 0) {
       return true
@@ -66,6 +62,16 @@ export default class extends Controller {
     }
 
     return false
+  }
+
+  handleCancel = () => {
+    this.#removeError(this.titleGroupTarget)
+    this.#removeError(this.contentGroupTarget)
+  }
+
+  #removeError = (element) => {
+    element.classList.remove(this.blockErrorStyleValue)
+    element.querySelector('p')?.remove()
   }
 
   #postUpdate = async (formDataObject) => {
