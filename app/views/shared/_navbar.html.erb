@@ -3,7 +3,7 @@
     <%= link_to OneUpADay, root_path, class: "tracking-widest text-2xl font-bold" %>
     <nav>
       <% if user_signed_in? %>
-        <button class="px-4 py-1 transition-all shadow rounded-xl hover:bg-background hover:shadow-md bg-primary" data-action="click->modal#newUpdate">New Update</button>
+        <button class="btn-primary" data-action="click->modal#newUpdate">New Update</button>
         <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete } %>
       <% else %>
         <%= link_to "Sign in", new_user_session_path %>

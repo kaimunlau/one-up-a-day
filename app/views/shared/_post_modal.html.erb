@@ -1,19 +1,28 @@
 <div class="fixed inset-0 z-40 flex items-center justify-center hidden bg-black bg-opacity-50" data-modal-target="modal">
-  <div class="z-50 p-8 bg-white rounded-md shadow-md">
+  <div class="z-50 p-8 rounded-md shadow-md bg-background">
     <h2 class="text-lg font-semibold">What have you done today?</h2>
     <form data-controller="new-post" data-action="submit->new-post#handleSubmit">
+
       <div data-new-post-target="titleGroup" class="p-2 my-2 rounded">
         <label for="title">Today I have...</label>
-        <input type="text" name="title" id="title" placeholder="eaten a sandwich" class="w-full py-2 border rounded cursor-pointer bg-slate-200">
+        <input type="text" name="title" id="title" placeholder="eaten a sandwich" class="form-field">
       </div>
+
       <div data-new-post-target="contentGroup" class="p-2 my-2 rounded">
         <label for="content">More details</label>
-        <textarea name="content" id="content" placeholder="my sandwich was delicious and I will do it again" class="w-full py-2 border rounded cursor-pointer bg-slate-200"></textarea>
+        <textarea name="content" id="content" placeholder="my sandwich was delicious and I will do it again" class="form-field"></textarea>
       </div>
-      <label for="tags">Tags</label>
-      <select data-new-post-target="select" class="w-full" name="tags" id="tags" multiple data-tag-target="select"></select>
-      <input type="submit">
-      <button data-action="click->modal#close:stop:prevent click->new-post#handleCancel:stop:prevent">Cancel</button>
+
+      <div class="p-2 my-2">
+        <label for="tags">Tags</label>
+        <select data-new-post-target="select" class="w-full border rounded border-slate-400 t-select" name="tags" id="tags" multiple data-tag-target="select"></select>
+      </div>
+
+      <div class="flex justify-around">
+        <input type="submit" class="btn-primary hover:bg-green-300">
+        <button class="btn-danger" data-action="click->modal#close:stop:prevent click->new-post#handleCancel:stop:prevent">Cancel</button>
+      </div>
+
     </form>
   </div>
 </div>
