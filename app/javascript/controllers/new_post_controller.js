@@ -39,18 +39,12 @@ export default class extends Controller {
   }
 
   #formIsValid = (formData) => {
-    // const blockErrorStyle = 'bg-red-100'
     const errorMessage = '<p class="text-red-500 text-xs italic">Please fill out this field.</p>'
 
     const setError = (element) => {
       element.classList.add(this.blockErrorStyleValue)
       element.insertAdjacentHTML('beforeend', errorMessage)
     }
-
-    // const removeError = (element) => {
-    //   element.classList.remove(blockErrorStyle)
-    //   element.querySelector('p')?.remove()
-    // }
 
     this.#removeError(this.titleGroupTarget)
     this.#removeError(this.contentGroupTarget)
