@@ -1,6 +1,6 @@
-<header class="border-b shadow bg-accent">
-  <div class="container flex items-center justify-between px-5 py-3 mx-auto">
-    <%= link_to OneUpADay, root_path, class: "text-2xl font-bold" %>
+<header class="fixed top-0 left-0 right-0 border-b shadow bg-accent">
+  <div class="container flex items-center justify-between w-3/4 px-5 py-3 mx-auto">
+    <%= link_to OneUpADay, root_path, class: "tracking-widest text-2xl font-bold" %>
     <nav>
       <% if user_signed_in? %>
         <button class="px-4 py-1 transition-all shadow rounded-xl hover:bg-background hover:shadow-md bg-primary" data-action="click->modal#newUpdate">New Update</button>
