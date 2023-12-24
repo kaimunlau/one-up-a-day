@@ -12,11 +12,13 @@
     <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.min.css" rel="stylesheet">
   </head>
 
-  <body data-controller="modal">
+  <body data-controller="modal" class="bg-background">
     <%= render "shared/navbar" %>
-    <main class="container w-3/4 px-5 mx-auto mt-28">
+    <main class="container w-2/3 px-5 mx-auto mt-28">
       <%= render "shared/post_modal" %>
-      <%= render "shared/filters" %>
+      <% if user_signed_in? %>
+        <%= render "shared/filters" %>
+      <% end %>
       <%= yield %>
     </main>
     <p class="notice"><%= notice %></p>
