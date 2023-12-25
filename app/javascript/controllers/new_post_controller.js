@@ -93,8 +93,10 @@ export default class extends Controller {
     const data = await response.json()
     this.postIdValue = data.id
 
-    if (this.tagsValue.length > 0 && this.postIdValue !== 0) {
+    if (this.selectedTags && this.postIdValue !== 0) {
       this.#postTags()
+    } else {
+      window.location.href = `/`
     }
   }
 
