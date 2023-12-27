@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_15_154813) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_27_190258) do
   create_table "tag_update_posts", force: :cascade do |t|
     t.integer "tag_id", null: false
     t.integer "update_post_id", null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_15_154813) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name", default: "First Name", null: false
+    t.string "first_name", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
