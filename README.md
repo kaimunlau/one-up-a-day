@@ -27,7 +27,7 @@ OR<br>
 
 4. [OPTIONAL] Seed the database:<br>
 `rails db:seed`<br>
-> Note: if you do not seed the database, you will **have to** create youself a user in the console. For this, run `rails c` then in the console run `User.create!(email: <INSERT_DUMMY_EMAIL>, password: <INSERT DUMMY PASSWORD, first_name: <DUMMY_FIRST_NAME>)`
+> Note: if you do not seed the database, you will **have to** sign up once the app is running. Use a dummy email for sign up.
 
 ### Usage
 1. Start the server:<br>
