@@ -1,0 +1,20 @@
+<div class="mb-10">
+  <%= link_to "Back to all posts", root_path, class: "btn-secondary"  %>
+</div>
+
+<div class="mb-10">
+  <div class="mb-4">
+    <h1 class="text-xl"><span class="font-semibold"><%= @update_post.user.first_name %></span> has <%= @update_post.title %></h1>
+    <p class="text-sm italic">posted on <%= pretty_date_for @update_post.date %></p>
+  </div>
+
+  <% if @update_post.tags.any? %>
+    <div class="flex gap-2">
+      <% @update_post.tags.each do |tag| %>
+        <%= render "shared/tag", tag: tag %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<p><%= @update_post.content %></p>
