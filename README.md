@@ -1,24 +1,36 @@
-# README
+# OneUpADay
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Simple tool for daily updates from multiple users.
 
-Things you may want to cover:
+* Users can post 1 update per day
+* Users can tag their post with existing tags, or add their own tag
+* Sort updates by day, tag, or user
 
-* Ruby version
+## How to run
+### Requirements
+* `ruby '3.1.2'`
+* `'rails', '~> 7.1.2'`
 
-* System dependencies
+### Installation
+1. Clone this repo:<br>
+`git clone https://github.com/kaimunlau/one-up-a-day.git`<br>
+OR<br>
+`git clone git@github.com:kaimunlau/one-up-a-day.git`<br>
+OR<br>
+`gh repo clone kaimunlau/one-up-a-day`
 
-* Configuration
+2. Bundle all the things:<br>
+`bundle install`
 
-* Database creation
+3. Setup the database:<br>
+`rails db:create db:migrate`
 
-* Database initialization
+4. [OPTIONAL] Seed the database:<br>
+`rails db:seed`<br>
+> Note: if you do not seed the database, you will **have to** create youself a user in the console. For this, run `rails c` then in the console run `User.create!(email: <INSERT_DUMMY_EMAIL>, password: <INSERT DUMMY PASSWORD, first_name: <DUMMY_FIRST_NAME>)`
 
-* How to run the test suite
+### Usage
+1. Start the server:<br>
+`rails s`
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+2. In the browser go to `localhost:3000`
