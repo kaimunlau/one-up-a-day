@@ -16,9 +16,7 @@
     <%= render "shared/navbar" %>
     <main class="container w-2/3 px-5 mx-auto mt-28">
       <%= render "shared/post_modal" %>
-      <% if user_signed_in? %>
-        <%= render "shared/filters" %>
-      <% end %>
+      <%= render "shared/filters" %>
       <%= yield %>
     </main>
     <p class="notice"><%= notice %></p>
