@@ -6,9 +6,14 @@ Tag.destroy_all
 UpdatePost.destroy_all
 TagUpdatePost.destroy_all
 
-puts 'Creating users...'
+puts 'Creating test user...'
+ap FactoryBot.create(:user, email: 'test@test.com', first_name: 'Tester')
+
+puts 'Creating random users...'
+random_users = []
 5.times do
-  ap FactoryBot.create(:user)
+  ap user = FactoryBot.create(:user)
+  random_users << user
 end
 
 puts 'Creating tags...'
@@ -29,7 +34,8 @@ possible_titles = [
   'played a game',
   'devised a plan to take over the world'
 ]
-User.all.each do |user|
+
+random_users.each do |user|
   number_of_posts = rand(3..5)
   number_of_posts.times do |index|
     ap FactoryBot.create(
@@ -42,4 +48,8 @@ User.all.each do |user|
   end
 end
 
-puts 'Done!'
+puts 'Finished seeding the database! ヽ(•‿•)ノ'
+puts '-----------------------------------'
+puts 'You can now signup or login with'
+puts 'Email: test@test.com'
+puts 'Password: password'
