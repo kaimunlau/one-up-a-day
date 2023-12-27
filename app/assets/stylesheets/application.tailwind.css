@@ -17,3 +17,7 @@
 .btn-danger {
   @apply px-4 py-1 transition-all bg-red-300 shadow cursor-pointer rounded-xl hover:bg-red-400 hover:shadow-md;
 }
+
+.btn-secondary {
+  @apply px-4 py-1 transition-all shadow cursor-pointer bg-secondary rounded-xl hover:bg-teal-100 hover:shadow-md;
+}
