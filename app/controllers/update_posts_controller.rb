@@ -21,6 +21,10 @@ class UpdatePostsController < ApplicationController
     end
   end
 
+  def show
+    @update_post = UpdatePost.find(params[:id])
+  end
+
   private
 
   def update_post_params
